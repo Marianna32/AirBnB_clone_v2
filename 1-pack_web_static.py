@@ -1,26 +1,21 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Aug 13 14:21:54 2020
-@author: Robinson Montes
-"""
-from fabric.api import local, env
+'''Fabric script to generate .tgz archive'''
+
+from fabric.api import local
 from datetime import datetime
 
-env.user = 'ubuntu'
-env.hosts = ['35.227.35.75', '100.24.37.33']
+from fabric.decorators import runs_once
 
 
+@runs_once
 def do_pack():
-    """
-    Targging project directory into a packages as .tgz
-    """
-    now = datetime.now().strftime("%Y%m%d%H%M%S")
-    local('sudo mkdir -p ./versions')
-    path = './versions/web_static_{}'.format(now)
-    local('sudo tar -czvf {}.tgz web_static'.format(path))
-    name = '{}.tgz'.format(path)
-    if name:
-        return name
-    else:
+    '''generates .tgz archive from the contents of the web_static folder'''
+    local("mkdir -p versions")
+    path = ("versions/web_static_{}.tgz"
+            .format(datetime.strftime(datetime.now(), "%Y%m%d%H%M%S")))
+    result = local("tar -cvzf {} web_static"
+                   .format(path))
+
+    if result.failed:
         return None
+    return path
