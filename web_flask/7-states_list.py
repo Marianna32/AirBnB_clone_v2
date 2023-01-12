@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Sep  1 14:42:23 2020
-
-@author: Robinson Montes
+"""Starts a flask app
+    listens to 0.0.0.0:5000
+    
 """
 from models import storage
 from models.state import State
