@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Sep  1 14:42:23 2020
-
-@author: Robinson Montes
+"""Starts Flask web app
+Routes:
+    / - display "Hello HBNB!"
+    /hbnb - display "HBNB"
+    /c/<text> - display "C <text>"
+    /python/<text> - display "is cool"
+    /number/<n> - display n if integer
 """
 from flask import Flask
 app = Flask(__name__)
