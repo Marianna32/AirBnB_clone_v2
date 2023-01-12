@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
+"""Starts Flask web app
+Routes:
+    / - display "Hello HBNB!"
+    /hbnb - display "HBNB"
 """
-Created on Tue Sep  1 11:15:54 2020
 
-@author: Robinson Montes
-"""
 from flask import Flask
 app = Flask(__name__)
 
